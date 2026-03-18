@@ -1,130 +1,77 @@
-Financial Document Intelligence Chatbot (RAG)
+# Financial Document Intelligence Chatbot (RAG)
 
-A document-grounded chatbot that enables users to query financial reports using natural language. Built using Retrieval-Augmented Generation (RAG), the system ensures accurate and explainable answers strictly based on the uploaded documents.
+A document-grounded chatbot that allows users to query financial reports using natural language. Built using Retrieval-Augmented Generation (RAG), the system ensures accurate and explainable answers strictly based on the uploaded documents.
 
-Overview
+---
 
-Financial documents such as annual reports contain valuable insights but are often difficult to analyze due to their size and complexity. This project provides a conversational interface that allows users to extract key financial information efficiently.
+## Overview
 
-The chatbot retrieves relevant document sections using semantic search and generates responses using a local Large Language Model.
+Financial documents such as annual reports contain valuable insights but are often lengthy and complex. Extracting key information like revenue, net sales, or operating income requires significant time and effort.
 
-Features
+This project provides a conversational interface that:
+- Retrieves relevant information from financial documents
+- Generates accurate answers grounded in the document
+- Supports follow-up and comparison queries
 
-Document-grounded responses (no hallucinations)
+---
 
-Semantic search using vector embeddings
+## Features
 
-Multi-turn conversational support
+- Document-grounded responses (no hallucinations)
+- Semantic search using vector embeddings
+- Multi-turn conversational support
+- Year-wise and region-wise comparisons
+- Works with real financial PDF documents
+- Interactive web interface using Gradio
+- Fully open-source (no paid APIs required)
 
-Year-wise and region-wise comparisons
+---
 
-Works with real financial PDF documents
+## Tech Stack
 
-Interactive web interface using Gradio
+**Programming**
+- Python
+- Google Colab
 
-Fully open-source and API-free setup
+**LLM & NLP**
+- Hugging Face Transformers
+- Mistral-7B-Instruct (4-bit quantized)
 
-Tech Stack
+**RAG Framework**
+- LlamaIndex
 
-Programming
+**Embeddings**
+- all-MiniLM-L6-v2
 
-Python
+**UI**
+- Gradio
 
-Google Colab
+---
 
-LLM & NLP
+## System Architecture
 
-Hugging Face Transformers
+1. Upload financial PDF documents  
+2. Split documents into smaller chunks  
+3. Convert chunks into vector embeddings  
+4. Store embeddings in a vector index  
+5. Convert user query into embedding  
+6. Retrieve top-k relevant chunks  
+7. Generate answer using LLM based on retrieved context  
 
-Mistral-7B-Instruct (4-bit quantized)
+---
 
-RAG Framework
+## Example Queries
 
-LlamaIndex
+- What is the total net sales for 2024?  
+- Compare net sales for 2024, 2023, and 2022  
+- Which region contributed the most revenue?  
+- What is the operating income trend?  
 
-Embeddings
+---
 
-all-MiniLM-L6-v2
+## Installation
 
-UI
-
-Gradio
-
-System Architecture
-
-Upload financial PDF documents
-
-Split documents into smaller chunks
-
-Convert chunks into vector embeddings
-
-Store embeddings in a vector index
-
-Convert user query into embedding
-
-Retrieve top-k relevant chunks
-
-Generate answer using LLM based on retrieved context
-
-Example Queries
-
-What is the total net sales for 2024?
-
-Compare net sales for 2024, 2023, and 2022
-
-Which region contributed the most revenue?
-
-What is the operating income trend?
-
-Installation
+```bash
 git clone https://github.com/your-username/financial-rag-chatbot.git
 cd financial-rag-chatbot
 pip install -r requirements.txt
-Usage
-python app.py
-
-Then open the Gradio link in your browser.
-
-Project Structure
-financial-rag-chatbot/
-│
-├── data/                # Input PDFs
-├── models/              # Model configs (optional)
-├── app.py               # Main application
-├── rag_pipeline.py      # Retrieval + generation logic
-├── requirements.txt
-└── README.md
-Results
-
-Accurate extraction of financial metrics
-
-Reliable comparison across years and regions
-
-Reduced hallucination due to document grounding
-
-Smooth interaction through chatbot UI
-
-Limitations
-
-Requires GPU for optimal performance
-
-Slower response time due to local LLM inference
-
-Performance depends on document quality
-
-Indexing time increases with large documents
-
-Future Improvements
-
-API integration for faster inference
-
-Multi-document cross-analysis
-
-Persistent vector database (FAISS or Chroma)
-
-Cloud deployment (AWS, GCP, Hugging Face Spaces)
-
-Author
-
-Jeswin K Reji
-Aspiring Data Scientist
